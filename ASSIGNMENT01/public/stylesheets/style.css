@@ -1,14 +1,56 @@
 :root {
-  --charcoal: #373F51;
-  --selective-yellow: #FFBA19;
-  --baby-powder: #FFFCF9;
-  --vista-blue: #7699D4;
+  --charcoal: #373f51;
+  --selective-yellow: #ffba19;
+  --baby-powder: #fffcf9;
+  --vista-blue: #7699d4;
 }
 
 * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
   background-color: var(--charcoal);
 }
 
 h1 {
   color: var(--selective-yellow);
+}
+
+header {
+  position: relative;
+  width: 15vw;
+  height: 100vh;
+}
+
+nav {
+  position: absolute;
+  width: 70%;
+  left: 25%;
+  top: 30vh;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.horizontal-container {
+  display: flex;
+}
+
+.content-container {
+  background-color: var(--vista-blue);
+  width: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3vh;
+  background-color: var(--vista-blue);
 }
