@@ -1,8 +1,14 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+  --charcoal: #373F51;
+  --selective-yellow: #FFBA19;
+  --baby-powder: #FFFCF9;
+  --vista-blue: #7699D4;
 }
 
-a {
-  color: #00B7FF;
+* {
+  background-color: var(--charcoal);
+}
+
+h1 {
+  color: var(--selective-yellow);
 }
