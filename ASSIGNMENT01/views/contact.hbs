@@ -1,2 +1,37 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<form>
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input
+      class="form-control"
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Full Name"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input
+      class="form-control"
+      type="text"
+      id="email"
+      name="email"
+      placeholder="Email"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="context">What Did You Want to Discuss About?: </label>
+    <textarea
+      class="form-control"
+      type="text"
+      id="context"
+      name="context"
+      placeholder="Coffee chat, opportunities, etc."
+      required
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Send Message</button>
+</form>
