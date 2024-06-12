@@ -3,7 +3,8 @@
   --charcoal: #373f51;
   --selective-yellow: #ffba19;
   --baby-powder: #fffcf9;
-  --vista-blue: #7699d4;
+  --eggshell: #fffaf0;
+  --white: #ffffff;
 }
 
 * {
@@ -16,11 +17,24 @@ body {
   background-color: var(--charcoal);
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+.demo {
   font-family: "Bebas Neue", sans-serif;
 }
 
-p, li, input, textarea, button {
+p,
+li,
+input,
+textarea,
+button,
+label,
+span {
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -28,6 +42,10 @@ h1 {
   color: var(--selective-yellow);
   font-weight: 900;
   font-size: 200px;
+}
+
+h2 {
+  font-size: 70px;
 }
 
 .horizontal-container {
@@ -130,12 +148,17 @@ footer {
   justify-content: center;
 }
 
+h1 ~ * {
+  margin-left: 10px;
+}
 
 /* ---------- HOME PAGE ---------- */
 .tag {
-  /* margin-left: 3px; */
-  margin-top: -30px;
+  margin-top: -10px;
   font-size: 40px;
+}
+.tag:nth-of-type(1) {
+  margin-top: -30px;
 }
 
 /* ---------- ABOUT PAGE ---------- */
@@ -144,9 +167,13 @@ footer {
 .project-card {
   display: flex;
   gap: 40px;
-  max-width: 1000px;
+  max-width: 1543px;
   min-width: 500px;
-  width: 70vw;
+  width: 100vw;
+  background-color: var(--eggshell);
+  padding: 20px;
+  border-radius: 20px 0 0 20px;
+  margin-bottom: 50px;
 }
 
 .project-images {
@@ -154,17 +181,24 @@ footer {
   min-height: 100px;
   max-width: 300px;
   max-height: 300px;
+  border-radius: 20px;
 }
 
 .project-card-text {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .technologies-tags span {
-  background-color: black;
-  max-width: 80px;
-  min-width: 60px;
-  width: 10%;
-  height: 30px;
+  background-color: var(--white);
+  padding: 5px 10px;
+  border: solid 3px;
+  border-radius: 5px;
 }
 /* ---------- CONTACT PAGE ---------- */
+form {
+  background-color: var(--eggshell);
+  padding: 20px;
+  border-radius: 20px;
+}
