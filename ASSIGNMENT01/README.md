@@ -6,4 +6,5 @@ This project is about creating a personal portfolio.
 
 ## External Technologies
 
-Used Font Awesome for some of the icons.
+- Font Awesome for some of the icons.
+- Bootstrap for some of the styles.
