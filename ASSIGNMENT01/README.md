@@ -8,5 +8,5 @@ This project is about creating a personal portfolio.
 
 ## External Technologies
 
-- Font Awesome for some of the icons.
-- Bootstrap for some of the styles.
+- [Font Awesome](https://fontawesome.com/) for some of the icons.
+- [Bootstrap for](https://getbootstrap.com/) some of the styles.
