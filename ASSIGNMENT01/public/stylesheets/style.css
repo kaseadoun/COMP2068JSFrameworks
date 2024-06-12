@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
 h1 {
   color: var(--selective-yellow);
   font-weight: 900;
+  font-size: 200px;
 }
 
 header {
@@ -44,6 +46,9 @@ ul {
 }
 
 .content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--vista-blue);
   width: 100%;
 }
