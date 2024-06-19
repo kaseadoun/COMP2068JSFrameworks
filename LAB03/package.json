@@ -1,0 +1,15 @@
+{
+  "name": "lab03",
+  "version": "1.0.0",
+  "description": "Lab 3 - Node.js Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karsten Leung",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.7.0",
+    "url": "^0.11.3"
+  }
+}
