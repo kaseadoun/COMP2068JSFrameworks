@@ -21,6 +21,8 @@ app.use(function(req, res){
         let operatorSign = operatorSymbol(operator);
         // Write it on the page
         res.write(`${operandOne} ${operatorSign} ${operandTwo} = ${answer}`);
+    } else {
+        res.write("Error. Query not found.");
     }
     // End response process
     res.end();
