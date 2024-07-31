@@ -3,8 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
+
+var cors_options = {
+  origin: 'http:localhost:4200', // frontend url
+  optionsSuccessStatus: 200
+}
 
 var indexRouter = require('./routes/index');
+const expensesRouter = require("./routes/expenses");
+
+const mongoose = require('mongoose');
+const config = require('./config/globals');
+
 
 var app = express();
 
@@ -19,6 +30,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/expenses', expensesRouter);
+
+let connectionString = config.db;
+
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true})
+  .then((message) => {
+    console.log("Connected successfully!");
+  })
+  .catch((err) => {
+    console.log(`Error while connecting! ${err}`);
+  });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
