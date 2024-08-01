@@ -1,5 +1,9 @@
+require("dotenv").config();
+
 const configurations = {
-    'db' : '',
+    ConnectionString: {
+        DB: process.env.CONNECTION_STRING_MONGODB,
+    },
     'apiServer' : 'http://localhost:3000',
     'clientServer' : 'http://localhost:4200'
 }

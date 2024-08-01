@@ -32,9 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/expenses', expensesRouter);
 
-let connectionString = config.db;
-
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(config.ConnectionString.DB)
   .then((message) => {
     console.log("Connected successfully!");
   })
