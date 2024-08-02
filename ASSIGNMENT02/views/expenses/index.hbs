@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Amount</th>
+    </thead>
+    <tbody>
+        {{!-- Retrieve all projects and loop --}}
+        {{#each dataset}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.type}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.amount}}</td>
+            {{!-- TODO: UPDATE and DELETE buttons --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
