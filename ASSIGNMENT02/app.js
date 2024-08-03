@@ -13,6 +13,7 @@ var cors_options = {
 
 var indexRouter = require('./routes/index');
 var expensesRouter = require("./routes/expenses");
+var incomesRouter = require("./routes/incomes");
 
 const mongoose = require('mongoose');
 const config = require('./config/globals');
@@ -36,6 +37,7 @@ app.use(cors(cors_options));
 
 app.use('/', indexRouter);
 app.use('/expenses', expensesRouter);
+app.use('/incomes', incomesRouter);
 
 mongoose.connect(config.ConnectionString.DB)
   .then((message) => {
