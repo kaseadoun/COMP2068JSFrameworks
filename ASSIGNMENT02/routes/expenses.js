@@ -31,11 +31,33 @@ router.post("/add", async (req, res, next) => {
 });
 
 // --------------------------------------------------------------- Update
+router.get('/edit/:_id', async (req, res, next) => {
+    let expenseId = req.params._id;
+    let expenseData = await Expense.findById(expenseId);
+    res.render("expenses/edit", {
+        title: "Edit Expense Info",
+        expense: expenseData
+    });
+});
+
+router.post('/edit/:_id', async (req, res, next) => {
+    let expenseId = req.params._id;
+    await Expense.findByIdAndUpdate(
+        {_id: expenseId},
+        {
+            name: req.body.name,
+            type: req.body.type,
+            date: req.body.date,
+            amount: req.body.amount,
+        }
+    );
+    res.redirect('/expenses');
+});
 
 // --------------------------------------------------------------- Delete
 router.get("/delete/:_id", async (req, res, next) => {
-    let expenseID = req.params._id;
-    await Expense.findByIdAndRemove({ _id: expenseID });
+    let expenseId = req.params._id;
+    await Expense.findByIdAndDelete({ _id: expenseId });
     res.redirect("/expenses");
 });
 
