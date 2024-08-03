@@ -10,15 +10,18 @@ var cors_options = {
   origin: 'http://localhost:4200', // frontend url
   optionsSuccessStatus: 200
 }
-
+// Router Objects
 var indexRouter = require('./routes/index');
 var expensesRouter = require("./routes/expenses");
 var incomesRouter = require("./routes/incomes");
-
+// Database Connectivity
 const mongoose = require('mongoose');
 const config = require('./config/globals');
-
-
+// Import Passport and Session Modules
+var passport = require("passport");
+var session = require("express-session");
+var User = require("./models/user");
+// App Object Creation
 var app = express();
 
 // view engine setup
@@ -34,6 +37,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(cors_options));
+
+// Configure Session object
+app.use(session({
+  secret: "financetracker",
+  resave: false,
+  saveUninitialized: false
+}));
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+// Initialize Passport Strategy
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/expenses', expensesRouter);
