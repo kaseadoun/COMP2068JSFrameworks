@@ -5,7 +5,6 @@ const Expense = require("../models/expense");
 // --------------------------------------------------------------- Index
 router.get("/", async (req, res, next) => {
     let expenses = await Expense.find().sort([["date", "ascending"]]);
-    // return res.status(200).json(expenses);
     res.render("expenses/index", {
         title: "Expenses",
         dataset: expenses
