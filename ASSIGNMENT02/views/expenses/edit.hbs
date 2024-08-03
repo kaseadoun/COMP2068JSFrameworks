@@ -1,0 +1,25 @@
+<h1>{{ title }}</h1>
+<form method="POST">
+    <fieldset>
+        <label>expense:</label>
+        <input name="expense" id="expense" value="{{ expense.expense }}" required />
+    </fieldset>
+    <fieldset>
+        <label for="category">Category:</label>
+        <input name="category" id="category" value="{{ expense.category }}" required />
+    </fieldset>
+    <fieldset>
+        <label for="date">Date:</label>
+        <input name="date" id="date" type="date" value="{{ expense.date }}" required />
+    </fieldset>
+    <fieldset>
+        <label for="amount">Amount:</label>
+        <input name="amount" id="amount" type="number" value="{{ expense.amount }}" required />
+    </fieldset>
+    <fieldset>
+        <label for="description">Description:</label>
+        <textarea  name="description" id="description" value="{{ expense.description }}"></textarea>
+    </fieldset>
+    <button class="btn btn-primary">Update</button>
+    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+</form>
