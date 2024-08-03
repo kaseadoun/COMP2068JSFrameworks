@@ -10,3 +10,20 @@ router.get("/", async (req, res, next) => {
         dataset: income
     });
 });
+
+// --------------------------------------------------------------- Add
+router.get("/add", (req, res, next) => {
+    res.render("incomes/add", {title: "New Income"});
+});
+
+router.post("add", async (req, res, next) => {
+    let newIncome = new Income({
+        source: req.body.source,
+        date: req.body.date,
+        amount: req.body.amount,
+        description: req.body.description        
+    });
+    await newIncome.save();
+
+    res.redirect("/incomes");
+});
