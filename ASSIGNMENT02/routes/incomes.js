@@ -41,7 +41,7 @@ router.get("/edit/:_id", async (req, res, next) => {
 router.post("/edit/:_id", async(req, res, next) => {
     let incomeId = req.params._idl
     await Income.findByIdAndUpdate(
-        {_id: incomeId}.
+        {_id: incomeId},
         {
             source: req.body.source,
         date: req.body.date,
