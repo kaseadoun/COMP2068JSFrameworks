@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+<form method="POST">
+    <fieldset>
+        <label for="source">Source: </label>
+        <input type="text" name="source" id="source" required>
+    </fieldset>
+    <fieldset>
+        <label for="date">Date: </label>
+        <input type="date" name="date" id="date" required>
+    </fieldset>
+    <fieldset>
+        <label for="amount">Amount: </label>
+        <input type="number" step="0.01" name="amount" id="amount" required>
+    </fieldset>
+    <fieldset>
+        <label for="description">Description:</label>
+        <textarea  name="description" id="description"></textarea>
+    </fieldset>
+    <button class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+</form>

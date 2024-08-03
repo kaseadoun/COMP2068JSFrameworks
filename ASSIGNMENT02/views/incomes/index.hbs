@@ -1,0 +1,26 @@
+<h1>{{ title }}</h1>
+<a href="incomes/add" class="btn btn-info">Add Income</a>
+<table>
+    <thead>
+        <th>Source</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        {{!-- Retrieve all projects and loop --}}
+        {{#each dataset}}
+        <tr>
+            <td>{{this.source}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.amount}}</td>
+            <td>{{this.description}}</td>
+            {{!-- Update and Delete Button --}}
+            <td>
+                <a href="incomes/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+                <a href="incomes/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
