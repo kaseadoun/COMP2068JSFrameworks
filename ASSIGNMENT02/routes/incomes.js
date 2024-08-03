@@ -27,3 +27,29 @@ router.post("add", async (req, res, next) => {
 
     res.redirect("/incomes");
 });
+
+// --------------------------------------------------------------- Update
+router.get("/edit/:_id", async (req, res, next) => {
+    let incomeId = req.params._id;
+    let incomeData = await Income.findById(incomeId);
+    res.render("incomes/edit", {
+        title: "Edit Income Info",
+        income: incomeData
+    });
+});
+
+router.post("/edit/:_id", async(req, res, next) => {
+    let incomeId = req.params._idl
+    await Income.findByIdAndUpdate(
+        {_id: incomeId}.
+        {
+            source: req.body.source,
+        date: req.body.date,
+        amount: req.body.amount,
+        description: req.body.description   
+        }
+    );
+    res.redirect("incomes");
+});
+
+// --------------------------------------------------------------- Delete
