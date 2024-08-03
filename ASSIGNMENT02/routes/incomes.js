@@ -28,7 +28,7 @@ router.post("add", async (req, res, next) => {
     res.redirect("/incomes");
 });
 
-// --------------------------------------------------------------- Update
+// -------------------------------------------------------------- Update
 router.get("/edit/:_id", async (req, res, next) => {
     let incomeId = req.params._id;
     let incomeData = await Income.findById(incomeId);
@@ -53,3 +53,10 @@ router.post("/edit/:_id", async(req, res, next) => {
 });
 
 // --------------------------------------------------------------- Delete
+router.get("/delete/:_id", (req, res, next) => {
+    let incomeId = req.params._id;
+    await Income.findByIdAndDelete({ _id: incomeId });
+    res.redirect("/incomes");
+});
+
+module.exports = router;
