@@ -53,7 +53,7 @@ router.post("/edit/:_id", async(req, res, next) => {
 });
 
 // --------------------------------------------------------------- Delete
-router.get("/delete/:_id", (req, res, next) => {
+router.get("/delete/:_id", async (req, res, next) => {
     let incomeId = req.params._id;
     await Income.findByIdAndDelete({ _id: incomeId });
     res.redirect("/incomes");
