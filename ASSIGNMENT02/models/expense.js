@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const dataSchemaObject = {
-    name: {
+    expense: {
         type: String,
         required: true,
     },
-    type:{
+    category:{
         type: String,
         required: true,
     },
@@ -16,8 +16,12 @@ const dataSchemaObject = {
     amount: {
         type: Number,
         required: true,
+        min: 0.01
     },
-
+    description: {
+        type: String,
+        required: false
+    }
 }
 
 const mongooseSchema = mongoose.Schema(dataSchemaObject);

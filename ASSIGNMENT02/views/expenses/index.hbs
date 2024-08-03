@@ -2,19 +2,21 @@
 <a href="expenses/add" class="btn btn-info">Add an Expense</a>
 <table>
     <thead>
-        <th>Name</th>
+        <th>Expense</th>
         <th>Category</th>
         <th>Date</th>
         <th>Amount</th>
+        <th>Description</th>
     </thead>
     <tbody>
         {{!-- Retrieve all projects and loop --}}
         {{#each dataset}}
         <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.type}}</td>
+            <td>{{this.expense}}</td>
+            <td>{{this.category}}</td>
             <td>{{this.date}}</td>
             <td>{{this.amount}}</td>
+            <td>{{this.description}}</td>
             {{!-- Update and Delete Button --}}
             <td>
                 <a href="expenses/edit/{{this._id}}" class="btn btn-primary">Edit</a>

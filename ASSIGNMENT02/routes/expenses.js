@@ -20,10 +20,11 @@ router.get("/add", (req, res, next) => {
 
 router.post("/add", async (req, res, next) => {
     let newExpense = new Expense({
-        name: req.body.name,
-        type: req.body.type,
+        expense: req.body.expense,
+        category: req.body.category,
         date: req.body.date,
-        amount: req.body.amount
+        amount: req.body.amount,
+        description: req.body.description
     });
     await newExpense.save();
     
@@ -45,10 +46,11 @@ router.post('/edit/:_id', async (req, res, next) => {
     await Expense.findByIdAndUpdate(
         {_id: expenseId},
         {
-            name: req.body.name,
-            type: req.body.type,
+            expense: req.body.expense,
+            category: req.body.category,
             date: req.body.date,
             amount: req.body.amount,
+            description: req.body.description
         }
     );
     res.redirect('/expenses');
