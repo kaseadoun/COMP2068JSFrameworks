@@ -1,0 +1,22 @@
+<h1>Login</h1>
+{{#if messages}}
+    <div>Invalid Credentials</div>
+{{else}}
+    <div>Please Enter Your Credentials</div>
+{{/if}}
+<form method="POST">
+    <fieldset>
+        <label for="username">Username:</label>
+        <input name="username" id="username" required />
+    </fieldset>
+    <fieldset>
+        <label for="password">Password:</label>
+        <input name="password" id="password" type="password" required />
+    </fieldset>
+    <fieldset>
+        <button>Login</button>
+        Need an Account?
+        <a href="/register">
+        Register</a>
+    </fieldset>
+</form>
