@@ -16,7 +16,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate("local", {
-  successRedirect: "/incomes",
+  successRedirect: "/overview",
   failureRedirect: "/login",
   failureMessage: "Invalid Credentials",
 }));
@@ -35,7 +35,7 @@ router.post("/register", (req, res, next) => {
         return res.redirect("/register");
       } else {
         req.login(newUser, (err) => {
-          res.redirect("/incomes");
+          res.redirect("/overview");
         });
       }
     }
