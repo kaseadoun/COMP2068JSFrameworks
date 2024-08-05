@@ -1,13 +1,14 @@
 <header>
   <nav>
     <a>Finance Tracker</a>
-    <div>
+    <div class="nav-buttons">
       {{#if user}}
       <a>Dashboard</a>
       <a href="/incomes">Income</a>
       <a href="/expenses">Expense</a>
       <a href="/logout">Logout</a>
       {{else}}
+      <a href="/">Home</a>
       <a href="/register">Register</a>
       <a href="/login">Login</a>
       {{/if}}
