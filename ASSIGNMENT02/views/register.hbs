@@ -1,38 +1,46 @@
-<h1>Register</h1>
-<form method="POST">
-    <fieldset>
+<div id="login-register-layout">
+  <div id="login-register-container">
+    <h1>Register</h1>
+    <form method="POST">
+      <fieldset>
         <label for="username">Username:</label>
-        <input 
-            name="username"
-            id="username"
-            type="email"
-            placeholder="Enter Your Email"
-            required
+        <input
+          name="username"
+          id="username"
+          type="email"
+          placeholder="Enter Your Email"
+          required
         />
-    </fieldset>
-    <fieldset>
+      </fieldset>
+      <fieldset>
         <label for="password">Password:</label>
-        <input 
-            name="password"
-            id="password"
-            type="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            required
+        <input
+          name="password"
+          id="password"
+          type="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
         />
-    </fieldset>
-    <fieldset>
+      </fieldset>
+      <fieldset>
         <label for="confirm">Confirm Password:</label>
-        <input 
-            name="confirm"
-            id="confirm"
-            type="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            required
+        <input
+          name="confirm"
+          id="confirm"
+          type="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
         />
-    </fieldset>
-    <button>Register</button>
-    Already have an account?
-    <a href="/login" title="Login">
-      Login
-    </a>
-</form>
+      </fieldset>
+      <button>Register</button>
+      <div>
+        <p>
+          Already have an account?
+          <a href="/login" title="Login">
+            Login
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

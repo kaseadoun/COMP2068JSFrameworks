@@ -1,22 +1,26 @@
-<h1>Login</h1>
-{{#if messages}}
-    <div>Invalid Credentials</div>
-{{else}}
-    <div>Please Enter Your Credentials</div>
-{{/if}}
-<form method="POST">
-    <fieldset>
+<div id="login-register-layout">
+  <div id="login-register-container">
+    <h1>Login</h1>
+    {{#if messages}}
+      <div>Invalid Credentials</div>
+    {{else}}
+      <div>Please Enter Your Credentials</div>
+    {{/if}}
+    <form method="POST">
+      <fieldset>
         <label for="username">Username:</label>
         <input name="username" id="username" required />
-    </fieldset>
-    <fieldset>
+      </fieldset>
+      <fieldset>
         <label for="password">Password:</label>
         <input name="password" id="password" type="password" required />
-    </fieldset>
-    <fieldset>
-        <button>Login</button>
+      </fieldset>
+      <button>Login</button>
+      <p>
         Need an Account?
         <a href="/register">
-        Register</a>
-    </fieldset>
-</form>
+          Register</a>
+      </p>
+    </form>
+  </div>
+</div>
