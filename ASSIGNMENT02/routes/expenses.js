@@ -8,14 +8,15 @@ router.get("/", AuthenticationMiddleware, async (req, res, next) => {
     let expenses = await Expense.find().sort([["date", "ascending"]]);
     res.render("expenses/index", {
         title: "Expenses",
-        dataset: expenses
+        dataset: expenses,
+        user: req.user
     });
 });
 
 
 // --------------------------------------------------------------- Add
 router.get("/add", AuthenticationMiddleware, (req, res, next) => {
-    res.render("expenses/add", {title: "New Expense"});
+    res.render("expenses/add", {title: "New Expense", user: req.user});
 });
 
 router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
@@ -37,7 +38,8 @@ router.get('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     let expenseData = await Expense.findById(expenseId);
     res.render("expenses/edit", {
         title: "Edit Expense Info",
-        expense: expenseData
+        expense: expenseData,
+        user: req.user
     });
 });
 
@@ -59,7 +61,7 @@ router.post('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
 // --------------------------------------------------------------- Delete
 router.get("/delete/:_id", AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
-    await Expense.findByIdAndDelete({ _id: expenseId });
+    await Expense.findByIdAndDelete({ _id: expenseId, user: req.user });
     res.redirect("/expenses");
 });
 
