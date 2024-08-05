@@ -8,14 +8,15 @@
     {{/if}}
     <form method="POST">
       <fieldset>
-        <label for="username">Username:</label>
+        <label for="username" class="labels">Username:</label>
         <input name="username" id="username" required />
       </fieldset>
       <fieldset>
-        <label for="password">Password:</label>
+        <label for="password" class="labels">Password:</label>
         <input name="password" id="password" type="password" required />
       </fieldset>
       <button>Login</button>
+      <a href="/" class="cancel-button">Cancel</a>
       <p>
         Need an Account?
         <a href="/register">
