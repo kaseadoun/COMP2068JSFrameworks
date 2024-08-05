@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Expense = require("../models/expense");
+const AuthenticationMiddleware = require("../extensions/authentication");
 
 // --------------------------------------------------------------- Index
-router.get("/", async (req, res, next) => {
+router.get("/", AuthenticationMiddleware, async (req, res, next) => {
     let expenses = await Expense.find().sort([["date", "ascending"]]);
     res.render("expenses/index", {
         title: "Expenses",
@@ -13,11 +14,11 @@ router.get("/", async (req, res, next) => {
 
 
 // --------------------------------------------------------------- Add
-router.get("/add", (req, res, next) => {
+router.get("/add", AuthenticationMiddleware, (req, res, next) => {
     res.render("expenses/add", {title: "New Expense"});
 });
 
-router.post("/add", async (req, res, next) => {
+router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
     let newExpense = new Expense({
         expense: req.body.expense,
         category: req.body.category,
@@ -31,7 +32,7 @@ router.post("/add", async (req, res, next) => {
 });
 
 // --------------------------------------------------------------- Update
-router.get('/edit/:_id', async (req, res, next) => {
+router.get('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
     let expenseData = await Expense.findById(expenseId);
     res.render("expenses/edit", {
@@ -40,7 +41,7 @@ router.get('/edit/:_id', async (req, res, next) => {
     });
 });
 
-router.post('/edit/:_id', async (req, res, next) => {
+router.post('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
     await Expense.findByIdAndUpdate(
         {_id: expenseId},
@@ -56,7 +57,7 @@ router.post('/edit/:_id', async (req, res, next) => {
 });
 
 // --------------------------------------------------------------- Delete
-router.get("/delete/:_id", async (req, res, next) => {
+router.get("/delete/:_id", AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
     await Expense.findByIdAndDelete({ _id: expenseId });
     res.redirect("/expenses");

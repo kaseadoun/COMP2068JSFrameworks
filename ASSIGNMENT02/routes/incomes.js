@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Income = require("../models/income");
+const AuthenticationMiddleware = require("../extensions/authentication");
 
 // --------------------------------------------------------------- Index
-router.get("/", async (req, res, next) => {
+router.get("/", AuthenticationMiddleware, async (req, res, next) => {
   let income = await Income.find().sort([["date", "ascending"]]);
   res.render("incomes/index", {
     title: "Income",
@@ -12,11 +13,11 @@ router.get("/", async (req, res, next) => {
 });
 
 // --------------------------------------------------------------- Add
-router.get("/add", (req, res, next) => {
+router.get("/add", AuthenticationMiddleware, (req, res, next) => {
   res.render("incomes/add", { title: "New Income" });
 });
 
-router.post("/add", async (req, res, next) => {
+router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
   let newIncome = new Income({
     source: req.body.source,
     date: req.body.date,
@@ -29,7 +30,7 @@ router.post("/add", async (req, res, next) => {
 });
 
 // -------------------------------------------------------------- Update
-router.get("/edit/:_id", async (req, res, next) => {
+router.get("/edit/:_id", AuthenticationMiddleware, async (req, res, next) => {
   let incomeId = req.params._id;
   let incomeData = await Income.findById(incomeId);
   res.render("incomes/edit", {
@@ -38,7 +39,7 @@ router.get("/edit/:_id", async (req, res, next) => {
   });
 });
 
-router.post("/edit/:_id", async (req, res, next) => {
+router.post("/edit/:_id", AuthenticationMiddleware, async (req, res, next) => {
   let incomeId = req.params._idl;
   await Income.findByIdAndUpdate(
     { _id: incomeId },
@@ -53,7 +54,7 @@ router.post("/edit/:_id", async (req, res, next) => {
 });
 
 // --------------------------------------------------------------- Delete
-router.get("/delete/:_id", async (req, res, next) => {
+router.get("/delete/:_id", AuthenticationMiddleware, async (req, res, next) => {
   let incomeId = req.params._id;
   await Income.findByIdAndDelete({ _id: incomeId });
   res.redirect("/incomes");
