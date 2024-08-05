@@ -5,25 +5,25 @@ var passport = require("passport");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Finance Tracker' });
+  res.render('index', { title: 'Finance Tracker', user: req.user });
 });
 
 // --------------------------------------------- Login
 router.get('/login', (req, res, next) => {
   let messages = req.session.messages || [];
   req.session.messages = [];
-  res.render("login", { title: "Login to Your Account", messages: messages});
+  res.render("login", { title: "Login to Your Account", messages: messages, user: req.user});
 });
 
 router.post('/login', passport.authenticate("local", {
-  successRedirect: "/overview",
+  successRedirect: "/incomes",
   failureRedirect: "/login",
   failureMessage: "Invalid Credentials",
 }));
 
 // --------------------------------------------- Register
 router.get("/register", (req, res, next) => {
-  res.render("register", { title: "Create a New Account" });
+  res.render("register", { title: "Create a New Account", user: req.user });
 });
 
 router.post("/register", (req, res, next) => {
@@ -35,7 +35,7 @@ router.post("/register", (req, res, next) => {
         return res.redirect("/register");
       } else {
         req.login(newUser, (err) => {
-          res.redirect("/overview");
+          res.redirect("/incomes");
         });
       }
     }
