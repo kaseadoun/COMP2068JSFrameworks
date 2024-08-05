@@ -14,6 +14,7 @@ var cors_options = {
 var indexRouter = require('./routes/index');
 var expensesRouter = require("./routes/expenses");
 var incomesRouter = require("./routes/incomes");
+var overviewRouter = require("./routes/overview");
 // Database Connectivity
 const mongoose = require('mongoose');
 const config = require('./config/globals');
@@ -56,6 +57,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', indexRouter);
 app.use('/expenses', expensesRouter);
 app.use('/incomes', incomesRouter);
+app.use('/overview', overviewRouter);
 
 mongoose.connect(config.ConnectionString.DB)
   .then((message) => {
