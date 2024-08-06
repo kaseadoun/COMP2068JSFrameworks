@@ -13,7 +13,7 @@ const dataSchemaObject = {
     },
     date: {
         type: Date,
-        required: true
+        required: true,
     },
     amount: {
         type: Number,

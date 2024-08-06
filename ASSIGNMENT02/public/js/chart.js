@@ -38,6 +38,7 @@ async function fetchExpenseData() {
     try {
         const response = await fetch('/overview/expense_data');
         const data = await response.json();
+        
         let ctx = document.getElementById('expenseChart').getContext('2d');
 
         new Chart(ctx, {

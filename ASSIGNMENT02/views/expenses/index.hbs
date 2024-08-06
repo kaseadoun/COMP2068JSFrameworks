@@ -19,8 +19,8 @@
         <tr>
             <td>{{this.expense}}</td>
             <td>{{this.category}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.amount}}</td>
+            <td>{{dateReformat this.date}}</td>
+            <td>{{moneyReformat this.amount}}</td>
             <td>{{this.description}}</td>
             {{!-- Update and Delete Button --}}
             <td>

@@ -17,8 +17,8 @@
             {{#each dataset}}
             <tr>
                 <td class="column-source">{{this.source}}</td>
-                <td class="column-date">{{this.date}}</td>
-                <td class="column-amount">{{this.amount}}</td>
+                <td class="column-date">{{dateReformat this.date}}</td>
+                <td class="column-amount">{{moneyReformat this.amount}}</td>
                 <td class="column-description">{{this.description}}</td>
                 {{!-- Update and Delete Button --}}
                 <td class="column-options">
