@@ -1,12 +1,13 @@
 /* --------------------------------------------------- COLOR PALETTE */
 :root {
-  --primary: #092734;
-  --secondary: #274958;
+  --primary: #40476D;
+  --secondary: #575b74;
   --tertiary: #AEB7B3;
   --light-color: #E1EFE6;
   --black: #000000;
   --white: #FFFFFF;
-  --link-blue: #5798FF;
+  --link-blue: #c2ecff;
+  --yellow: #ffd000;
 }
 
 /* --------------------------------------------------- GENERAL STYLING */
@@ -18,7 +19,6 @@
 }
 
 body {
-  padding: 0 100px 0 100px;
   background-color: var(--primary);
   color: var(--light-color);
   height: 100vh;
@@ -28,12 +28,54 @@ a {
   color: var(--link-blue);
 }
 
+nav,
+.section-padding
+{
+  padding: 0 100px 0 100px;
+}
+
+.dashboard {
+  padding-top: 25px;
+  background-color: var(--secondary);
+  min-height: 94.5vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+#h1-span {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+}
+
+p,
+input,
+a, 
+button {
+  font-family: "Tajawal", sans-serif;
+  font-size: 20px;
+}
+
+button {
+  height: 25px;
+}
+
 /* --------------------------------------------------- NAVIGATION BAR */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
+}
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  
 }
 
 .nav-buttons {
@@ -108,21 +150,49 @@ button {
   margin: 10px 0;
 }
 
-.cancel-button {
-
-}
-
 /* --------------------------------------------------- LANDING PAGE (INDEX) */
 #landing-banner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 95vh;
+}
+
+#landing-banner h1 {
+  font-size: 50px;
+}
+
+#banner-button-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
 }
 
 .banner-button {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.banner-button:first-child {
+  background-color: var(--yellow);
+}
+.banner-button:nth-child(2) {
+  background-color: var(--tertiary);
+}
+.banner-button:hover {
+  opacity: 0.5;
+}
 
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  background-color: var(--white);
 }
 
 /* --------------------------------------------------- CHART ATTRIBUTES */
