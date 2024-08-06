@@ -12,22 +12,33 @@ router.get('/', AuthenticationMiddleware, (req, res, next) => {
 
 router.get('/income_data', AuthenticationMiddleware, async (req, res, next) => {
     try {
-        let incomes = await Incomes.find().sort({ date: -1 });
+        let incomes = await Incomes.find({ user: req.user._id }).sort({ date: -1 });
 
         let chartData = {
             labels: incomes.map(income => income.date.toISOString().split('T')[0]),
             datasets: [{
-                label: 'Income',
-                data: incomes.map(income => income.amount),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
+                data: incomes.map(income => income.amount)
+            }],
+            user: req.user
         };
         res.json(chartData);
     } catch (error) {
         res.status(500).send(error.message);
     }
 });
+
+// router.get('/expense_data', AuthenticationMiddleware, async (req, res, next) => {
+//     try {
+//         let expenses = await Expenses.find().sort({ date: -1 });
+
+//         let chartData = {
+//             labels: expenses.map(expense => expense.data.toISOString().split('T')[0]),
+//             datasets: [{
+//                 label: 'Expense',
+//                 data: 
+//             }]
+//         }
+//     }
+// });
 
 module.exports = router;
