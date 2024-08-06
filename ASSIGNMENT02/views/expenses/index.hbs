@@ -1,8 +1,11 @@
 {{> header }}
 <div class="section-padding dashboard">
     <div class="page-header">
-        <h1>{{ title }}</h1>
-        <a href="expenses/add" class="btn btn-info">Add an Expense</a>
+        <div>
+            <h1>{{ title }}</h1>
+            <a href="expenses/add" class="btn btn-info">Add an Expense</a>
+        </div>
+        <h2>Total Expense: {{ moneyReformat this.totalExpense }}</h2>
     </div>
 <table>
     <thead>

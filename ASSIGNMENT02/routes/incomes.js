@@ -6,9 +6,13 @@ const AuthenticationMiddleware = require("../extensions/authentication");
 // --------------------------------------------------------------- Index
 router.get("/", AuthenticationMiddleware, async (req, res, next) => {
   let income = await Income.find({ user: req.user._id }).sort([["date", "ascending"]]);
+
+  let incomeSum = income.reduce((totalIncome, incomeItem) => totalIncome + incomeItem.amount, 0);
+
   res.render("incomes/index", {
     title: "Income",
     dataset: income,
+    totalIncome: incomeSum,
     user: req.user
   });
 });
