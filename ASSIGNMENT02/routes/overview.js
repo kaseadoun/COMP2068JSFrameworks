@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user");
-const Expense = require("../models/expense");
+const Expenses = require("../models/expense");
 const Incomes = require("../models/income");
 const AuthenticationMiddleware = require("../extensions/authentication");
 
@@ -27,18 +27,21 @@ router.get('/income_data', AuthenticationMiddleware, async (req, res, next) => {
     }
 });
 
-// router.get('/expense_data', AuthenticationMiddleware, async (req, res, next) => {
-//     try {
-//         let expenses = await Expenses.find().sort({ date: -1 });
+router.get('/expense_data', AuthenticationMiddleware, async (req, res, next) => {
+    try {
+        let expenses = await Expenses.find({ user: req.user._id }).sort({ date: -1 });
 
-//         let chartData = {
-//             labels: expenses.map(expense => expense.data.toISOString().split('T')[0]),
-//             datasets: [{
-//                 label: 'Expense',
-//                 data: 
-//             }]
-//         }
-//     }
-// });
+        let chartData = {
+            labels: expenses.map(expense => expense.date.toISOString().split('T')[0]),
+            datasets: [{
+                data: expenses.map(expense => expense.amount)
+            }],
+            user: req.user
+        };
+        res.json(chartData);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
 module.exports = router;
