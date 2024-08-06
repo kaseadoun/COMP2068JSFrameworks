@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(cors_options));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/chart.js/dist')));
 
 // Configure Session object
 app.use(session({
