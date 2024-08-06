@@ -2,9 +2,13 @@
   <div id="login-register-container">
     <h1>Login</h1>
     {{#if messages}}
-      <div>Invalid Credentials</div>
+      <div>
+        <p class="error-message">Invalid Credentials</p>
+      </div>
     {{else}}
-      <div>Please Enter Your Credentials</div>
+      <div>
+        <p>Please Enter Your Credentials</p>
+      </div>
     {{/if}}
     <form method="POST">
       <fieldset>
