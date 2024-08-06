@@ -84,6 +84,9 @@ input {
 .labels {
   margin-bottom: 5px;
 }
+button {
+  height: 30px;
+}
 
 /* --------------------------------------------------- LOGIN PAGE | REGISTER PAGE */
 #login-register-layout {
