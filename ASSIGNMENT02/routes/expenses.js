@@ -5,7 +5,7 @@ const AuthenticationMiddleware = require("../extensions/authentication");
 
 // --------------------------------------------------------------- Index
 router.get("/", AuthenticationMiddleware, async (req, res, next) => {
-    let expenses = await Expense.find().sort([["date", "ascending"]]);
+    let expenses = await Expense.find({ user: req.user._id }).sort([["date", "ascending"]]);
     res.render("expenses/index", {
         title: "Expenses",
         dataset: expenses,
@@ -21,6 +21,7 @@ router.get("/add", AuthenticationMiddleware, (req, res, next) => {
 
 router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
     let newExpense = new Expense({
+        user: req.user._id,
         expense: req.body.expense,
         category: req.body.category,
         date: req.body.date,
@@ -48,6 +49,7 @@ router.post('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     await Expense.findByIdAndUpdate(
         {_id: expenseId},
         {
+            user: req.user._id,
             expense: req.body.expense,
             category: req.body.category,
             date: req.body.date,
