@@ -210,8 +210,26 @@ table {
 }
 th, td {
   height: 50px;
+  padding: 10px;
 }
-
+th {
+  background-color: var(--secondary);
+}
+.column-income-source {
+  width: 15%;
+}
+.column-income-date {
+  width: 10%;
+}
+.column-income-amount {
+  width: 15%;
+}
+.column-income-description {
+  width: 50%;
+}
+.column-income-options {
+  width: 10%;
+}
 
 .page-header {
   display: flex;
