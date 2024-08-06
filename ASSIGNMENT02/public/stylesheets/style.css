@@ -1,11 +1,11 @@
 /* --------------------------------------------------- COLOR PALETTE */
 :root {
-  --primary: #40476D;
+  --primary: #40476d;
   --secondary: #575b74;
-  --tertiary: #AEB7B3;
-  --light-color: #E1EFE6;
+  --tertiary: #aeb7b3;
+  --light-color: #e1efe6;
   --black: #000000;
-  --white: #FFFFFF;
+  --white: #ffffff;
   --link-blue: #c2ecff;
   --yellow: #ffd000;
 }
@@ -29,15 +29,17 @@ a {
 }
 
 nav,
-.section-padding
-{
+.section-padding {
   padding: 0 100px 0 100px;
 }
 
 .dashboard {
   padding-top: 25px;
-  background-color: var(--secondary);
+  background-color: var(--white);
   min-height: 94.5vh;
+}
+.dashboard > * {
+  color: var(--black);
 }
 
 h1,
@@ -54,7 +56,7 @@ label,
 
 p,
 input,
-a, 
+a,
 button {
   font-family: "Tajawal", sans-serif;
   font-size: 20px;
@@ -73,9 +75,6 @@ nav {
 }
 nav a {
   font-weight: 500;
-}
-nav a:hover {
-  
 }
 
 .nav-buttons {
@@ -199,4 +198,22 @@ button {
 .barChart {
   max-width: 500px;
   max-height: 500px;
+}
+
+/* --------------------------------------------------- DASHBOARD */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: left;
+  margin-top: 25px;
+}
+th, td {
+  height: 50px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

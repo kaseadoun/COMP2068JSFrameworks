@@ -1,29 +1,32 @@
 {{> header }}
 <div class="section-padding dashboard">
-<h1>{{ title }}</h1>
-<a href="incomes/add" class="btn btn-info">Add Income</a>
-<table>
-    <thead>
-        <th>Source</th>
-        <th>Date</th>
-        <th>Amount</th>
-        <th>Description</th>
-    </thead>
-    <tbody>
-        {{!-- Retrieve all projects and loop --}}
-        {{#each dataset}}
-        <tr>
-            <td>{{this.source}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.amount}}</td>
-            <td>{{this.description}}</td>
-            {{!-- Update and Delete Button --}}
-            <td>
-                <a href="incomes/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                <a href="incomes/delete/{{this._id}}" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+        <a href="incomes/add" class="btn btn-info">Add Income</a>
+    </div>
+    <table>
+        <thead>
+            <th class="column-source">Source</th>
+            <th class="column-date">Date</th>
+            <th class="column-amount">Amount</th>
+            <th class="column-description">Description</th>
+            <th class="column-options">Options</th>
+        </thead>
+        <tbody>
+            {{!-- Retrieve all projects and loop --}}
+            {{#each dataset}}
+            <tr>
+                <td class="column-source">{{this.source}}</td>
+                <td class="column-date">{{this.date}}</td>
+                <td class="column-amount">{{this.amount}}</td>
+                <td class="column-description">{{this.description}}</td>
+                {{!-- Update and Delete Button --}}
+                <td class="column-options">
+                    <a href="incomes/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+                    <a href="incomes/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>

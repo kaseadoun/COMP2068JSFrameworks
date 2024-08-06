@@ -1,7 +1,9 @@
 {{> header }}
 <div class="section-padding dashboard">
-<h1>{{ title }}</h1>
-<a href="expenses/add" class="btn btn-info">Add an Expense</a>
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+        <a href="expenses/add" class="btn btn-info">Add an Expense</a>
+    </div>
 <table>
     <thead>
         <th>Expense</th>
@@ -9,6 +11,7 @@
         <th>Date</th>
         <th>Amount</th>
         <th>Description</th>
+        <th>Options</th>
     </thead>
     <tbody>
         {{!-- Retrieve all projects and loop --}}
