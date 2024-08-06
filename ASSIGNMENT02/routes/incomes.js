@@ -43,7 +43,7 @@ router.get("/edit/:_id", AuthenticationMiddleware, async (req, res, next) => {
 });
 
 router.post("/edit/:_id", AuthenticationMiddleware, async (req, res, next) => {
-  let incomeId = req.params._idl;
+  let incomeId = req.params._id;
   await Income.findByIdAndUpdate(
     { _id: incomeId },
     {
