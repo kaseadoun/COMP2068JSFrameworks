@@ -1,13 +1,22 @@
 {{> header }}
 <div class="section-padding dashboard">
     <h1>Overview</h1>
-    <div>
-        <h2>Income</h2>
-        <canvas id="incomeChart" class="barChart"></canvas>
-    </div>
-    <div>
-        <h2>Expense</h2>
-        <canvas id="expenseChart" class="barChart"></canvas>
+    <div id="chart-column-container">
+        <div class="chart-column">
+            <div>
+                <h2>Income</h2>
+                <canvas id="incomeChart" class="barChart"></canvas>
+            </div>
+            <div>
+                <h2>Expense</h2>
+                <canvas id="expenseChart" class="barChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-column">
+            <div id="net-income-section">
+                {{net}}
+            </div>
+        </div>
     </div>
     <script type="module" src="/js/chart.js"></script>
 </div>
