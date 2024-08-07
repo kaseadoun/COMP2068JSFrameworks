@@ -1,0 +1,12 @@
+{{> header }}
+<div class="section-padding dashboard">
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        <fieldset>
+            <label for="name">Category:</label>
+            <input type="text" name="name" id="name" value="{{ category.name }}" required />
+        </fieldset>
+        <button class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+    </form>
+</div>

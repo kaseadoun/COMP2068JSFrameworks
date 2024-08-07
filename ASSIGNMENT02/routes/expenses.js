@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Expense = require("../models/expense");
+const Category = require("../models/category");
 const AuthenticationMiddleware = require("../extensions/authentication");
 
 // --------------------------------------------------------------- Index
@@ -19,8 +20,13 @@ router.get("/", AuthenticationMiddleware, async (req, res, next) => {
 
 
 // --------------------------------------------------------------- Add
-router.get("/add", AuthenticationMiddleware, (req, res, next) => {
-    res.render("expenses/add", {title: "New Expense", user: req.user});
+router.get("/add", AuthenticationMiddleware, async (req, res, next) => {
+    let categoryList = await Category.find().sort([["name", "ascending"]]);
+
+    res.render("expenses/add", {
+        title: "New Expense",
+        categories: categoryList, 
+        user: req.user});
 });
 
 router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
@@ -41,9 +47,11 @@ router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
 router.get('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
     let expenseData = await Expense.findById(expenseId);
+    let categoryList = await Category.find().sort([["name", "ascending"]]);
     res.render("expenses/edit", {
         title: "Edit Expense Info",
         expense: expenseData,
+        categories: categoryList, 
         user: req.user
     });
 });

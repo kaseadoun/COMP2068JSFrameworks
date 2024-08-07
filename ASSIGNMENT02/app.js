@@ -15,6 +15,7 @@ var indexRouter = require("./routes/index");
 var expensesRouter = require("./routes/expenses");
 var incomesRouter = require("./routes/incomes");
 var overviewRouter = require("./routes/overview");
+var categoryRouter = require("./routes/categories");
 // Database Connectivity
 const mongoose = require("mongoose");
 const config = require("./config/globals");
@@ -77,6 +78,7 @@ app.use("/", indexRouter);
 app.use("/expenses", expensesRouter);
 app.use("/incomes", incomesRouter);
 app.use("/overview", overviewRouter);
+app.use("/categories", categoryRouter);
 
 mongoose
   .connect(config.ConnectionString.DB)

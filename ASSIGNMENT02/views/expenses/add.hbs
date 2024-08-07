@@ -1,28 +1,32 @@
 {{> header }}
 <div class="section-padding dashboard">
-<h1>{{ title }}</h1>
-<form method="POST">
-    <fieldset>
-        <label for="expense">Expense: </label>
-        <input type="text" name="expense" id="expense" required>
-    </fieldset>
-    <fieldset>
-        <label for="category">Category: </label>
-        <input type="text" name="category" id="category" required>
-    </fieldset>
-    <fieldset>
-        <label for="date">Date: </label>
-        <input type="date" name="date" id="date" required>
-    </fieldset>
-    <fieldset>
-        <label for="amount">Amount: </label>
-        <input type="number" step="0.01" name="amount" id="amount" required>
-    </fieldset>
-    <fieldset>
-        <label for="description">Description:</label>
-        <textarea  name="description" id="description"></textarea>
-    </fieldset>
-    <button class="btn btn-primary">Add</button>
-    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
-</form>
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        <fieldset>
+            <label for="expense">Expense: </label>
+            <input type="text" name="expense" id="expense" required>
+        </fieldset>
+        <fieldset>
+            <label for="category">Category: </label>
+            <select name="category" id="category">
+                {{#each categories}}
+                <option>{{ this.name }}</option>
+                {{/each}}
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="date">Date: </label>
+            <input type="date" name="date" id="date" required>
+        </fieldset>
+        <fieldset>
+            <label for="amount">Amount: </label>
+            <input type="number" step="0.01" name="amount" id="amount" required>
+        </fieldset>
+        <fieldset>
+            <label for="description">Description:</label>
+            <textarea  name="description" id="description"></textarea>
+        </fieldset>
+        <button class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+    </form>
 </div>

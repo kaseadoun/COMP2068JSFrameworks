@@ -1,24 +1,24 @@
 {{> header }}
 <div class="section-padding dashboard">
-<h1>{{ title }}</h1>
-<form method="POST">
-    <fieldset>
-        <label>Source:</label>
-        <input name="source" id="source" value="{{ income.source }}" required />
-    </fieldset>
-    <fieldset>
-        <label for="date">Date:</label>
-        <input name="date" id="date" type="date" value="{{ income.date }}" required />
-    </fieldset>
-    <fieldset>
-        <label for="amount">Amount:</label>
-        <input name="amount" id="amount" type="number" value="{{ income.amount }}" required />
-    </fieldset>
-    <fieldset>
-        <label for="description">Description:</label>
-        <textarea  name="description" id="description" value="{{ income.description }}"></textarea>
-    </fieldset>
-    <button class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
-</form>
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        <fieldset>
+            <label for="source">Source:</label>
+            <input type="text" name="source" id="source" value="{{ income.source }}" required />
+        </fieldset>
+        <fieldset>
+            <label for="date">Date:</label>
+            <input name="date" id="date" type="date" value="{{ income.date }}" required />
+        </fieldset>
+        <fieldset>
+            <label for="amount">Amount:</label>
+            <input name="amount" id="amount" type="number" value="{{ income.amount }}" required />
+        </fieldset>
+        <fieldset>
+            <label for="description">Description:</label>
+            <textarea  name="description" id="description" value="{{ income.description }}"></textarea>
+        </fieldset>
+        <button class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+    </form>
 </div>
