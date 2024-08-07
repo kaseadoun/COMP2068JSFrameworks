@@ -2,8 +2,8 @@
 :root {
   --primary: #40476d;
   --secondary: #575b74;
-  --tertiary: #aeb7b3;
-  --light-color: #e1efe6;
+  --tertiary: #d9dcec;
+  --light-color: #eef3f0;
   --black: #000000;
   --white: #ffffff;
   --link-blue: #c2ecff;
@@ -197,37 +197,67 @@ button {
 /* --------------------------------------------------- CHART ATTRIBUTES */
 .barChart {
   max-width: 500px;
-  max-height: 500px;
+  max-height: 300px;
 }
 
 /* --------------------------------------------------- DASHBOARD */
+/* Overview */
+#chart-column-container {
+  margin-top: 20px;
+  padding: 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.chart-column > * {
+  margin: 0 0 40px 0;
+}
+
+/* Tables of Income and Expense */
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 18px;
   text-align: left;
   margin-top: 25px;
+  border-bottom: solid 4px var(--primary);
+  filter: drop-shadow(0 0 5px var(--black));
+  color: var(--black);
 }
 th, td {
   height: 50px;
-  padding: 10px;
+  padding: 10px 20px;
 }
 th {
   background-color: var(--secondary);
+  color: var(--light-color);
 }
-.column-income-source {
+tr:nth-child(odd) {
+  background-color: var(--white);
+}
+tr:nth-child(even) {
+  background-color: var(--tertiary);
+}
+.column-income-source, 
+.column-expense-expense {
   width: 15%;
 }
-.column-income-date {
+.column-income-date,
+.column-expense-date {
   width: 10%;
 }
-.column-income-amount {
+.column-income-amount,
+.column-expense-amount {
   width: 15%;
 }
-.column-income-description {
-  width: 50%;
+.column-income-description,
+.column-expense-description {
+  width: 40%;
 }
 .column-income-options {
+  width: 10%;
+}
+.column-expense-options,
+.column-expense-category {
   width: 10%;
 }
 
