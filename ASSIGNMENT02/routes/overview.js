@@ -6,8 +6,25 @@ const Incomes = require("../models/income");
 const AuthenticationMiddleware = require("../extensions/authentication");
 
 // GET overview page
-router.get('/', AuthenticationMiddleware, (req, res, next) => {
-    res.render('overview', {title: "Overview", user: req.user});
+router.get('/', AuthenticationMiddleware, async (req, res, next) => {
+    let [income, expense] = await Promise.all([
+        Incomes.find({ user: req.user._id }).sort([["date", "ascending"]]),
+        Expenses.find({ user: req.user._id }).sort([["date", "ascending"]])
+    ]);
+
+    let incomeSum = income.reduce((totalIncome, incomeItem) => totalIncome + incomeItem.amount, 0);
+
+    let expenseSum = expense.reduce((totalExpense, expenseItem) => totalExpense + expenseItem.amount, 0);
+
+    let net = incomeSum - expenseSum;
+
+    res.render('overview', {
+        title: "Overview", 
+        user: req.user,
+        totalIncome: incomeSum,
+        totalExpense: expenseSum,
+        net: net
+    });
 });
 
 // GET income and puts the sum based on the month on the bar chart
@@ -18,7 +35,7 @@ router.get('/income_data', AuthenticationMiddleware, async (req, res, next) => {
         let incomes = await Incomes.find({ user: req.user._id }).sort({ date: -1 });
 
         incomes.forEach(income => {
-            const month = new Date(income.date.getMonth()).toLocaleString('default', { month: 'short' });
+            const month = income.date.toLocaleString('default', { month: 'short' })
             months[month] += income.amount;
         });
 
@@ -43,7 +60,7 @@ router.get('/expense_data', AuthenticationMiddleware, async (req, res, next) => 
         let expenses = await Expenses.find({ user: req.user._id }).sort({ date: -1 });
 
         expenses.forEach(expense => {
-            let month = new Date(expense.date.getMonth()).toLocaleString('default', { month: 'short' });
+            let month = expense.date.toLocaleString('default', { month: 'short' });
             months[month] += expense.amount;
         });
 
