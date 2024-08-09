@@ -5,31 +5,81 @@ var Sample = require("../models/sample");
 var passport = require("passport");
 
 /* GET home page. */
-router.get("/", (req, res, next) => {
-  res.render("index", { 
-    title: "Finance Tracker"
+router.get("/", async (req, res, next) => {
+  const months = {
+    Jan: [0, 0],
+    Feb: [0, 0],
+    Mar: [0, 0],
+    Apr: [0, 0],
+    May: [0, 0],
+    Jun: [0, 0],
+    Jul: [0, 0],
+    Aug: [0, 0],
+    Sep: [0, 0],
+    Oct: [0, 0],
+    Nov: [0, 0],
+    Dec: [0, 0],
+  };
+
+  let samples = await Sample.find();
+
+  let incomeSum = 0;
+  let expenseSum = 0;
+
+  samples.forEach((sample) => {
+    for (const [key, value] of Object.entries(months)) {
+      const monthIndex = Object.keys(months).indexOf(key);
+
+      if (sample.income[monthIndex] !== undefined) {
+        months[key][0] = sample.income[monthIndex];
+        incomeSum += months[key][0];
+      }
+      if (sample.expense[monthIndex] !== undefined) {
+        months[key][1] = sample.expense[monthIndex];
+        expenseSum += months[key][1];
+      }
+    }
+  });
+
+  let net = incomeSum - expenseSum;
+
+  if (net < 0) {
+    netMessage = "You are currently at a deficit.";
+  } else if (net > 0) {
+    netMessage = "You are currently profiting.";
+  } else {
+    netMessage = "You are currently breaking even.";
+  }
+
+  res.render("index", {
+    title: "Finance Tracker",
+    incomeSum: incomeSum,
+    expenseSum,
+    expenseSum,
+    net: net,
+    netMessage: netMessage
   });
 });
 
 router.get("/index/sample_data", async (req, res, next) => {
   const months = {
-    'Jan': [0,0],
-    'Feb': [0,0],
-    'Mar': [0,0],
-    'Apr': [0,0],
-    'May': [0,0],
-    'Jun': [0,0],
-    'Jul': [0,0],
-    'Aug': [0,0],
-    'Sep': [0,0],
-    'Oct': [0,0],
-    'Nov': [0,0],
-    'Dec': [0,0],
+    Jan: [0, 0],
+    Feb: [0, 0],
+    Mar: [0, 0],
+    Apr: [0, 0],
+    May: [0, 0],
+    Jun: [0, 0],
+    Jul: [0, 0],
+    Aug: [0, 0],
+    Sep: [0, 0],
+    Oct: [0, 0],
+    Nov: [0, 0],
+    Dec: [0, 0],
   };
 
   let samples = await Sample.find();
 
-  samples.forEach(sample => {
+  samples.forEach((sample) => {
     for (const [key, value] of Object.entries(months)) {
       const monthIndex = Object.keys(months).indexOf(key);
 
@@ -45,13 +95,15 @@ router.get("/index/sample_data", async (req, res, next) => {
 
   let chartData = {
     labels: Object.keys(months),
-    datasets: [{
-      data: Object.values(months)
-    }]
+    datasets: [
+      {
+        data: Object.values(months),
+      },
+    ],
   };
 
   res.json(chartData);
-})
+});
 
 // --------------------------------------------- Login
 router.get("/login", (req, res, next) => {
