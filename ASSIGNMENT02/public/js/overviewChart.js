@@ -18,7 +18,7 @@ async function fetchIncomeData() {
                 datasets: [{
                     label: 'Income',
                     data: data.datasets[0].data,
-                    backgroundColor: 'rgba(192, 192, 192, 1)',
+                    backgroundColor: 'rgba(0, 192, 0, 1)',
                     borderColor: 'rgba(192, 192, 192, 1)',
                     borderWidth: 1
                 }]
@@ -51,7 +51,7 @@ async function fetchExpenseData() {
                 datasets: [{
                     label: 'Expense',
                     data: data.datasets[0].data,
-                    backgroundColor: 'rgba(192, 192, 192, 1)',
+                    backgroundColor: 'rgba(192, 0, 0, 1)',
                     borderColor: 'rgba(192, 192, 192, 1)',
                     borderWidth: 1
                 }]
