@@ -5,6 +5,9 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var hbs = require("hbs");
+var passport = require('passport');
+var githubStrategy = require("passport-github2").Strategy;
+var session = require('express-session');
 
 var cors_options = {
   origin: "http://localhost:4200", // frontend url
@@ -83,6 +86,36 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Initialize Passport Strategy
 passport.use(User.createStrategy());
+// Configuire GitHub Strategy
+passport.use(new githubStrategy(
+  // Options object
+  {
+    clientID: config.Authentication.GitHub.ClientId,
+    clientSecret: config.Authentication.GitHub.ClientSecret,
+    callbackURL: config.Authentication.GitHub.CallbackURL
+  },
+  // Callback function
+  // Profile is GitHub profile
+  async (accessToken, refreshToken, profile, done) => {
+    // Search user by ID
+    const user = await User.findOne({ oauthId: profile.id });
+    // If User exists
+    if (user) {
+      return done(null, user);
+    } else {
+      // Register new user
+      const newUser = new User({
+        username: profile.username,
+        oauthId: profile.id,
+        oauthProvider: 'Github',
+        created: Date.now()
+      });
+      // Add to DB
+      const savedUser = await newUser.save()
+      return done(null, savedUser);
+    }
+  }
+));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

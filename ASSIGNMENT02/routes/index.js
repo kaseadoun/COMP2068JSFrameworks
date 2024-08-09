@@ -49,4 +49,11 @@ router.get("/logout", (req, res, next) => {
   });
 });
 
+// --------------------------------------------- GitHub
+router.get("/github", passport.authenticate("github", { scope: ["user.email"] }));
+
+router.get("/github/callback", passport.authenticate("github", { failureRedirect: "/login"}), (req, res, next) => {
+  res.redirect("/overview");
+})
+
 module.exports = router;

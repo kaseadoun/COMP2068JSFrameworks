@@ -4,8 +4,13 @@ const configurations = {
     ConnectionString: {
         DB: process.env.CONNECTION_STRING_MONGODB,
     },
-    'apiServer' : 'http://localhost:3000',
-    'clientServer' : 'http://localhost:4200'
+    Authentication: {
+        GitHub: {
+            ClientId: process.env.GITHUB_CLIENT_ID,
+            ClientSecret: process.env.GITHUB_CLIENT_SECRET,
+            CallbackUrl: process.env.GITHUB_CALLBACK_URL
+        },
+    },
 }
 
 module.exports = configurations;
