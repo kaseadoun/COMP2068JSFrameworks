@@ -5,7 +5,7 @@ const AuthenticationMiddleware = require("../extensions/authentication");
 
 // --------------------------------------------------------------- Index
 router.get("/", AuthenticationMiddleware, async (req, res, next) => {
-  let income = await Income.find({ user: req.user._id }).sort([["date", "ascending"]]);
+  let income = await Income.find({ user: req.user._id }).sort([["date", "descending"]]);
 
   let incomeSum = income.reduce((totalIncome, incomeItem) => totalIncome + incomeItem.amount, 0);
 
@@ -58,7 +58,7 @@ router.post("/edit/:_id", AuthenticationMiddleware, async (req, res, next) => {
       description: req.body.description,
     }
   );
-  res.redirect("incomes");
+  res.redirect("/incomes");
 });
 
 // --------------------------------------------------------------- Delete
