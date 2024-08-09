@@ -28,7 +28,7 @@
             {{!-- Update and Delete Button --}}
             <td>
                 <a href="expenses/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                <a href="expenses/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                <a href="expenses/delete/{{this._id}}" class="btn btn-danger" onclick="return confirmDeletion()">Delete</a>
             </td>
         </tr>
         {{/each}}

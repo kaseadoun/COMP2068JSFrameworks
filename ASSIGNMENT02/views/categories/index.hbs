@@ -15,7 +15,7 @@
                 <td>{{ this.name }}</td>
                 <td>
                     <a href="categories/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                    <a href="categories/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                    <a href="categories/delete/{{this._id}}" class="btn btn-danger" onclick="return confirmDeletion()">Delete</a>
                 </td>
             </tr>
             {{/each}}
