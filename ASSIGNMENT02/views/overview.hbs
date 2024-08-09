@@ -3,19 +3,22 @@
     <h1>Overview</h1>
     <div id="chart-column-container">
         <div class="chart-column">
-            <div>
-                <h2>Income</h2>
-                <canvas id="incomeChart" class="barChart"></canvas>
-            </div>
-            <div>
-                <h2>Expense</h2>
-                <canvas id="expenseChart" class="barChart"></canvas>
+            <div id="net-income-section" class="overview-section">
+                <h2>Quick Summary</h2>
+                <p>Your Income: {{ moneyReformat totalIncome }}</p>
+                <p>Your Expense: {{ moneyReformat totalExpense }}</p>
+                <p>Your Net: {{ moneyReformat net }}</p>
+                <p>{{ netMessage }}</p>
             </div>
         </div>
         <div class="chart-column">
-            <div id="net-income-section">
-                <h3>{{ netMessage }}</h3>
-                <h3>{{ net }}</h3>
+            <div class="overview-section">
+                <h2>Income</h2>
+                <canvas id="incomeChart" class="barChart"></canvas>
+            </div>
+            <div class="overview-section">
+                <h2>Expense</h2>
+                <canvas id="expenseChart" class="barChart"></canvas>
             </div>
         </div>
     </div>
