@@ -21,7 +21,7 @@ router.get("/", AuthenticationMiddleware, async (req, res, next) => {
 
 // --------------------------------------------------------------- Add
 router.get("/add", AuthenticationMiddleware, async (req, res, next) => {
-    let categoryList = await Category.find().sort([["name", "ascending"]]);
+    let categoryList = await Category.find({ user: req.user._id }).sort([["name", "ascending"]]);
 
     res.render("expenses/add", {
         title: "New Expense",
