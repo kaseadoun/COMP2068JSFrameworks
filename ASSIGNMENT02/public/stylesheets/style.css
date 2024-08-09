@@ -403,8 +403,13 @@ tr:nth-child(even) {
   width: 10%;
 }
 
-.page-header {
+.title-div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.form-add-button {
+  border: solid 3px var(--secondary);
+  background-color: var(--tertiary);
 }
