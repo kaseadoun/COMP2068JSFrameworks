@@ -9,8 +9,9 @@ async function fetchIncomeData() {
     try {
         const response = await fetch('/overview/income_data');
         const data = await response.json();
+        // Gets element by id and gets 2d rendering context
         let ctx = document.getElementById('incomeChart').getContext('2d');
-
+        // New chart object
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -41,9 +42,9 @@ async function fetchExpenseData() {
     try {
         const response = await fetch('/overview/expense_data');
         const data = await response.json();
-        
+        // Gets element by id and gets 2d rendering context
         let ctx = document.getElementById('expenseChart').getContext('2d');
-
+        // New chart object
         new Chart(ctx, {
             type: 'bar',
             data: {

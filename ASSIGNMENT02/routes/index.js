@@ -6,6 +6,7 @@ var passport = require("passport");
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
+  // Months object for sample data
   const months = {
     Jan: [0, 0],
     Feb: [0, 0],
@@ -20,29 +21,32 @@ router.get("/", async (req, res, next) => {
     Nov: [0, 0],
     Dec: [0, 0],
   };
-
+  // Data received
   let samples = await Sample.find();
 
   let incomeSum = 0;
   let expenseSum = 0;
-
+  // Goes through the sample data
   samples.forEach((sample) => {
+    // Iterates through the object
     for (const [key, value] of Object.entries(months)) {
+      // Gets month index based on the keys
       const monthIndex = Object.keys(months).indexOf(key);
-
+      // If the value at income of the sample object is no undefined, add it to the first index of the month object of the allocated key. Also add it to income sum
       if (sample.income[monthIndex] !== undefined) {
         months[key][0] = sample.income[monthIndex];
         incomeSum += months[key][0];
       }
+      // Same logic, but for expenses
       if (sample.expense[monthIndex] !== undefined) {
         months[key][1] = sample.expense[monthIndex];
         expenseSum += months[key][1];
       }
     }
   });
-
+  // Doing the math in the backend if the sample is going to display a profit or loss
   let net = incomeSum - expenseSum;
-
+  // Defines the message depending on the condition
   if (net < 0) {
     netMessage = "You are currently at a deficit.";
   } else if (net > 0) {
@@ -50,7 +54,7 @@ router.get("/", async (req, res, next) => {
   } else {
     netMessage = "You are currently breaking even.";
   }
-
+  // Render it so it can be used on the page
   res.render("index", {
     title: "Finance Tracker",
     incomeSum: incomeSum,
@@ -62,6 +66,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/index/sample_data", async (req, res, next) => {
+  // Months object for sample data
   const months = {
     Jan: [0, 0],
     Feb: [0, 0],
@@ -76,14 +81,14 @@ router.get("/index/sample_data", async (req, res, next) => {
     Nov: [0, 0],
     Dec: [0, 0],
   };
-
+  // Data received
   let samples = await Sample.find();
 
   samples.forEach((sample) => {
     for (const [key, value] of Object.entries(months)) {
+      // Gets month index based on the keys
       const monthIndex = Object.keys(months).indexOf(key);
-
-      // Safeguard against undefined values in income and expense arrays
+      // If the value at income of the sample object is no undefined, add it to the first index of the month object of the allocated key.
       if (sample.income[monthIndex] !== undefined) {
         months[key][0] = sample.income[monthIndex];
       }
@@ -92,7 +97,7 @@ router.get("/index/sample_data", async (req, res, next) => {
       }
     }
   });
-
+  // Allocates data to specific chart object keys
   let chartData = {
     labels: Object.keys(months),
     datasets: [
