@@ -1,8 +1,10 @@
+// Once the document is loaded, run the functions
 document.addEventListener('DOMContentLoaded', () => {
     fetchIncomeData();
     fetchExpenseData();
 });
 
+// Async function to fetch data from the income collection to create a bar chart for income
 async function fetchIncomeData() {
     try {
         const response = await fetch('/overview/income_data');
@@ -34,6 +36,7 @@ async function fetchIncomeData() {
     }
 }
 
+// Async function to fetch data from the expense collection to create a bar chart for expense
 async function fetchExpenseData() {
     try {
         const response = await fetch('/overview/expense_data');

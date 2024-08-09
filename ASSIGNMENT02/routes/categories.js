@@ -3,6 +3,7 @@ const router = express.Router();
 const Category = require("../models/category");
 const AuthenticationMiddleware = require("../extensions/authentication");
 
+// Gets the category data and renders it for the page
 router.get('/', AuthenticationMiddleware, async (req, res, next) => {
     let categories = await Category.find().sort([["name", "descending"]]);
     res.render("categories/index", {
@@ -11,11 +12,12 @@ router.get('/', AuthenticationMiddleware, async (req, res, next) => {
         user: req.user,
     });
 });
-
+// ------------------------------------------------------- ADDING
+// Gets the add page and renders it
 router.get('/add', AuthenticationMiddleware, async (req, res, next) => {
     res.render("categories/add", { title: "Add an Expense Category", user: req.user});
 });
-
+// Adds the new category into the collection
 router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
     let newCategory = new Category({
         user: req.user._id,
@@ -25,7 +27,7 @@ router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
     await newCategory.save();
     res.redirect("/categories");
 });
-
+// ------------------------------------------------------- EDITING
 router.get('/edit/:_id', AuthenticationMiddleware, async(req, res, next) => {
     let categoryId = req.params._id;
     let categoryData = await Category.findById(categoryId);
@@ -46,7 +48,7 @@ router.post('/edit/:_id', AuthenticationMiddleware, async(req, res, next) => {
         }
     )
 });
-
+// ------------------------------------------------------- DELETING
 router.get("/delete/:_id", AuthenticationMiddleware, async (req, res, next) => {
     let categoryId = req.params._id;
     await Category.findByIdAndDelete({ _id: categoryId, user: req.user});
