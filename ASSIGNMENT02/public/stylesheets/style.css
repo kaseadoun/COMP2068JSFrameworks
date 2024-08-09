@@ -22,6 +22,7 @@ body {
   background-color: var(--primary);
   color: var(--light-color);
   height: 100vh;
+  margin-top: 50px;
 }
 
 a {
@@ -66,12 +67,25 @@ button {
   height: 25px;
 }
 
+.button {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
 /* --------------------------------------------------- NAVIGATION BAR */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0px;
   height: 50px;
+  width: 100%;
+  background-color: var(--primary);
 }
 nav a {
   font-weight: 500;
@@ -100,6 +114,15 @@ nav a {
   height: 100%;
   background-color: var(--tertiary);
   color: var(--black);
+}
+
+/* --------------------------------------------------- FOOTER */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30px;
 }
 
 /* --------------------------------------------------- FORM GENERAL */
@@ -138,15 +161,25 @@ button {
 }
 
 #login-register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: solid 2px grey;
   border-radius: 5px;
   padding: 20px 20px;
-  width: 20vw;
+  width: 25vw;
   background-color: var(--secondary);
 }
 
 #login-register-container > * {
   margin: 10px 0;
+  width: 90%;
+}
+
+.github-button {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 /* --------------------------------------------------- LANDING PAGE (INDEX) */
@@ -168,14 +201,6 @@ button {
   margin-top: 10px;
 }
 
-.banner-button {
-  display: block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
 .banner-button:first-child {
   background-color: var(--yellow);
 }
