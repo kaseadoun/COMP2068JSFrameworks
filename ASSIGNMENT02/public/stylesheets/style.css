@@ -64,7 +64,8 @@ button {
 }
 
 button {
-  height: 25px;
+  display: block;
+  height: 49px;
 }
 
 .button {
@@ -74,6 +75,10 @@ button {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
+}
+
+.button:hover {
+  opacity: 0.5;
 }
 
 /* --------------------------------------------------- NAVIGATION BAR */
@@ -148,9 +153,6 @@ input {
 .labels {
   margin-bottom: 5px;
 }
-button {
-  height: 30px;
-}
 
 /* --------------------------------------------------- LOGIN PAGE | REGISTER PAGE */
 #login-register-layout {
@@ -171,10 +173,36 @@ button {
   width: 25vw;
   background-color: var(--secondary);
 }
+#login-register-container > h1,
+#login-register-container > p,
+#login-register-container > a {
+  text-align: center;
+}
+
+.text-below-cancel {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
 #login-register-container > * {
   margin: 10px 0;
   width: 90%;
+}
+
+#cancel-button {
+  display: block;
+  padding-top: 7px;
+  height: 40px;
+  width: 120px;
+  text-decoration: none;
+  background-color: grey;
+  color: var(--white);
+  border-radius: 5px;
+}
+
+#cancel-button:hover {
+  opacity: 0.5;
 }
 
 .github-button {
@@ -213,10 +241,17 @@ button {
 
 .section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 40vh;
   background-color: var(--white);
+}
+.section-padding > h2 {
+  margin-top: 20px;
+  color: var(--black);
+}
+.sample-chart-container {
+  
 }
 
 /* --------------------------------------------------- CHART ATTRIBUTES */

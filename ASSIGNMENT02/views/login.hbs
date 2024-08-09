@@ -2,13 +2,9 @@
   <div id="login-register-container">
     <h1>Login</h1>
     {{#if messages}}
-      <div>
-        <p class="error-message">Invalid Credentials</p>
-      </div>
+      <p class="error-message">Invalid Credentials</p>
     {{else}}
-      <div>
-        <p>Please Enter Your Credentials</p>
-      </div>
+      <p>Please Enter Your Credentials</p>
     {{/if}}
     <form method="POST">
       <fieldset>
@@ -20,13 +16,13 @@
         <input name="password" id="password" type="password" required />
       </fieldset>
       <button>Login</button>
-      <a href="github" class="github-button button">Login with GitHub</a>
-      <a href="/" class="cancel-button">Cancel</a>
-      <p>
-        Need an Account?
-        <a href="/register">
-          Register</a>
-      </p>
     </form>
+    <a href="/" id="cancel-button">Cancel</a>
+    <div class="text-below-cancel">
+      <p>Need an Account?</p>
+      <a href="/register">Register</a>
+    </div>
+    <p>Or</p>
+    <a href="github" class="github-button button">Login with GitHub</a>
   </div>
 </div>
