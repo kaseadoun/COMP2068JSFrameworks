@@ -5,7 +5,7 @@ const AuthenticationMiddleware = require("../extensions/authentication");
 
 // Gets the category data and renders it for the page
 router.get('/', AuthenticationMiddleware, async (req, res, next) => {
-    let categories = await Category.find().sort([["name", "descending"]]);
+    let categories = await Category.find({ user: req.user._id }).sort([["name", "descending"]]);
     res.render("categories/index", {
         title: "All Expense Categories",
         dataset: categories,
