@@ -24,9 +24,9 @@
                 <td>{{moneyReformat this.amount}}</td>
                 <td>{{this.description}}</td>
                 {{!-- Update and Delete Button --}}
-                <td>
-                    <a href="incomes/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                    <a href="incomes/delete/{{this._id}}" class="btn btn-danger" onclick="return confirmDeletion()">Delete</a>
+                <td class="button-form-row">
+                    <a href="incomes/edit/{{this._id}}" class="button edit-button">Edit</a>
+                    <a href="incomes/delete/{{this._id}}" class="button delete-button" onclick="return confirmDeletion()">Delete</a>
                 </td>
             </tr>
             {{/each}}
