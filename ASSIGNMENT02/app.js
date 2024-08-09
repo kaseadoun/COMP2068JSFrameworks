@@ -35,14 +35,27 @@ hbs.registerPartials(__dirname + "/views/partials");
 // Helpers
 // Helper for full date in Month (String), Day (Number), and Year (Number)
 hbs.registerHelper("dateReformat", function (date) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  };
   return new Date(date).toLocaleDateString(undefined, options);
+});
+// Helper to reformat the date to show in edit
+hbs.registerHelper("dateEditFormat", function (date) {
+  const currentDate = new Date(date);
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate() + 1).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 });
 // Helper for money format
 hbs.registerHelper("moneyReformat", function (amount) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'CAD',
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "CAD",
   }).format(amount);
 });
 
