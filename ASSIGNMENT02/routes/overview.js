@@ -17,13 +17,23 @@ router.get('/', AuthenticationMiddleware, async (req, res, next) => {
     let expenseSum = expense.reduce((totalExpense, expenseItem) => totalExpense + expenseItem.amount, 0);
 
     let net = incomeSum - expenseSum;
+    let netMessage = "";
+
+    if (net < 0) {
+        netMessage = "You are currently at a deficit."
+    } else if (net > 0) {
+        netMessage = "You are currently profiting."
+    } else {
+        netMessage = "You are currently breaking even."
+    }
 
     res.render('overview', {
         title: "Overview", 
         user: req.user,
         totalIncome: incomeSum,
         totalExpense: expenseSum,
-        net: net
+        net: net,
+        netMessage: netMessage
     });
 });
 
