@@ -50,8 +50,6 @@ router.get("/index/sample_data", async (req, res, next) => {
     }]
   };
 
-  console.log(Object.values(months))
-
   res.json(chartData);
 })
 
