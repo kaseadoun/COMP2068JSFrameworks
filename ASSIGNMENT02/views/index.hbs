@@ -21,9 +21,9 @@
             <canvas id="sampleExpenseChart" class="sampleBarChart"></canvas>
         </div>
         <div id="net-income-section" class="sampleBarChart">
-            <p class="sample-text">Your Income: {{ incomeSum }}</p>
-            <p class="sample-text">Your Expense: {{ expenseSum }}</p>
-            <p class="sample-text">Your Net: {{ net }}</p>
+            <p class="sample-text">Your Income: {{ moneyReformat incomeSum }}</p>
+            <p class="sample-text">Your Expense: {{ moneyReformat expenseSum }}</p>
+            <p class="sample-text">Your Net: {{ moneyReformat net }}</p>
             <p class="sample-text">{{ netMessage }}</p>
         </div>    
     </div>

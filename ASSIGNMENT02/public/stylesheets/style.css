@@ -64,12 +64,12 @@ button {
 }
 
 button {
-  display: block;
   height: 49px;
 }
 
 .button {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 10px 15px;
   border-radius: 5px;
   color: var(--primary);
@@ -320,6 +320,10 @@ label {
 }
 .sampleBarChart {
   width: 20vw;
+}
+
+.sample-text {
+  color: black;
 }
 
 /* --------------------------------------------------- CHART ATTRIBUTES */
