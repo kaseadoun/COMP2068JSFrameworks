@@ -47,7 +47,7 @@ router.post("/add", AuthenticationMiddleware, async (req, res, next) => {
 router.get('/edit/:_id', AuthenticationMiddleware, async (req, res, next) => {
     let expenseId = req.params._id;
     let expenseData = await Expense.findById(expenseId);
-    let categoryList = await Category.find().sort([["name", "ascending"]]);
+    let categoryList = await Category.find({ user: req.user._id }).sort([["name", "ascending"]]);
     res.render("expenses/edit", {
         title: "Edit Expense Info",
         expense: expenseData,

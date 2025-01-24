@@ -9,11 +9,12 @@
     </fieldset>
     <fieldset>
         <label for="category">Category:</label>
-        <select name="course" id="course">
+        <select name="category" id="category">
+            <option value="none"></option>
             {{#each categories}}
                 <option>{{ this.name }}</option>
             {{/each}}
-            <option><a href="/categories">Add Category</a></option>
+            <option value="add-category">Add Category</option>
         </select>
     </fieldset>
     <fieldset>
@@ -33,3 +34,4 @@
 </form>
 </div>
 </div>
+<script src="/js/categories.js"></script>
