@@ -89,4 +89,31 @@ router.get('/expense_data', AuthenticationMiddleware, async (req, res, next) => 
     }
 });
 
+router.get('/expense_category_data', AuthenticationMiddleware, async (req, res, next) => {
+    try {
+        let expenses = await Expenses.find({ user: req.user._id });
+
+        // Count expenses by category
+        const totalByCategory = expenses.reduce((categoryMap, expenseItem) => {
+            const categoryName = expenseItem.category;
+            if (!categoryMap[categoryName]) {
+                categoryMap[categoryName] = 0;
+            }
+            categoryMap[categoryName] += expenseItem.amount;
+            return categoryMap;
+        }, {});
+
+        let chartData = {
+            labels: Object.keys(totalByCategory),
+            datasets:[{
+                data: Object.values(totalByCategory)
+            }],
+            user: req.user
+        };
+        res.json(chartData);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 module.exports = router;

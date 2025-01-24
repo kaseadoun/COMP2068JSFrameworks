@@ -2,7 +2,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchIncomeData();
     fetchExpenseData();
+    fetchExpenseDataByCategory() 
 });
+
+function randomColourGenerator() {
+    const characters = "0123456789ABCDEF";
+    let colour = "#";
+    for (let i = 0; i < 6; i++) {
+        colour += characters[Math.floor(Math.random() * 16)];
+    }
+    return colour;
+}
 
 // Async function to fetch data from the income collection to create a bar chart for income
 async function fetchIncomeData() {
@@ -65,6 +75,31 @@ async function fetchExpenseData() {
                 }
             }
         });
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function fetchExpenseDataByCategory() {
+    try {
+        const response = await fetch('/overview/expense_category_data');
+        const data = await response.json();
+
+        let ctx = document.getElementById('expenseCategoryChart').getContext('2d');
+
+        console.log(data);
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    data: data.datasets[0].data,
+                    backgroundColor: data.labels.map(() => randomColourGenerator()),
+                }],
+                hoverOffset: 4
+            }
+        })
     } catch (err) {
         console.error(err);
     }
